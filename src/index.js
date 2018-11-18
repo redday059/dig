@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import promise from 'redux-promise';
 
 import reducers from './reducers';
 
@@ -13,7 +14,7 @@ import ProductList from "./components/ProductList";
 
 import './index.css';
 
-const createStoreWithMiddleware = createStore;
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={
