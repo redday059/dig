@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
 
 import reducers from './reducers';
@@ -21,12 +21,14 @@ ReactDOM.render(
     createStoreWithMiddleware(reducers,
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() /*for redux chrome-extention*/ )
   }>
-    <Router>
-      <App>
-        <Route path='/' exact component={ProductList}/>
-        <Route path='/product/:id' component={Product}/>
-      </App>
-    </Router>
+    <App>
+      <Router>
+        <Switch>
+          <Route path='/product/:id' component={Product}/>
+          <Route path='/' exact component={ProductList}/>
+        </Switch>
+      </Router>
+    </App>
   </Provider>
   , document.querySelector('#root'));
 
