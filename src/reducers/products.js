@@ -1,8 +1,8 @@
-import { FETCH_PRODUCTS_TYPE } from "../actions";
+import { NEW_PRODUCTS_TYPE } from "../actions";
 
-export default function (state = {}, action) {
+export default (state = {}, action) => {
   switch (action.type) {
-    case FETCH_PRODUCTS_TYPE: {
+    case NEW_PRODUCTS_TYPE: {
       const nextState = {...state};
       action.payload.data.forEach(
         product => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import './App.css';
-import { fetchProducts } from "../actions/fetch";
+import { fetchProducts } from "../actions/products";
 
 class App extends Component {
   constructor(props) {
