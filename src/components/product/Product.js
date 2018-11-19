@@ -15,7 +15,7 @@ class Product extends React.Component {
     }
   }
 
-  createOnThumbClick = id => e => {
+  changeActiveImage = id => {
     this.setState({
       activeImageId: id
     })
@@ -36,7 +36,7 @@ class Product extends React.Component {
             thumbs={imgThumbs}
             originals={imgOriginals}
             activeId={this.state.activeImageId}
-            createOnThumbClick={this.createOnThumbClick}/> :
+            handleThumbClick={this.changeActiveImage}/> :
           null
         }
         <ProductDescription {...rest} />

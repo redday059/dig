@@ -1,19 +1,25 @@
 import React from "react";
 
-export default ({thumbs, originals, activeId, createOnThumbClick}) => (
-  <div>
-    <img alt={activeId} className='original' src={originals[activeId]} />
-    <div className='thumbs'>
-      { thumbs.map(
-        (thumbUrl, id) =>
-          <img
-            className={ activeId === id ? 'active' : 'inactive'}
-            alt={activeId}
-            key={id}
-            onClick={createOnThumbClick(id)}
-            src={thumbUrl}
-          />
-      )}
+const ThumbImg = ({isActive, id, src, handleClick}) => {
+  const onClick = () => handleClick(id)
+
+  return (<img
+    className={ isActive ? 'active' : 'inactive'}
+    alt={id}
+    onClick={onClick}
+    src={src}
+  />)
+}
+
+export default ({thumbs, originals, activeId, handleThumbClick}) => {
+  return (
+    <div>
+      <img alt={activeId} className='original' src={originals[activeId]} />
+      <div className='thumbs'>
+        { thumbs.map(
+          (thumbUrl, id) =>
+            <ThumbImg isActive={activeId === id} id={id} key={id} src={thumbUrl} handleClick={handleThumbClick}/>
+        )}
+      </div>
     </div>
-  </div>
-)
+)}
