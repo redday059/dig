@@ -11,7 +11,7 @@ const ThumbImg = ({isActive, id, src, handleClick}) => {
   />)
 }
 
-export default ({thumbs, originals, activeId, handleThumbClick}) => {
+const ProductImage = ({thumbs, originals, activeId, handleThumbClick}) => {
   return (
     <div>
       <img alt={activeId} className='original' src={originals[activeId]} />
@@ -23,3 +23,5 @@ export default ({thumbs, originals, activeId, handleThumbClick}) => {
       </div>
     </div>
 )}
+
+export default ProductImage;

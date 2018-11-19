@@ -7,6 +7,7 @@ import get from "lodash.get";
 import ProductImage from "./ProductImage";
 import ProductDescription from "./ProductDescription";
 import { postComment } from '../../actions/comments';
+import ProductComments from "./ProductComments";
 
 class Product extends React.Component {
   constructor(props) {
@@ -24,6 +25,10 @@ class Product extends React.Component {
   };
 
   postCommentForProduct = text => {
+    if (!text) {
+      return
+    }
+    
     this.props.postComment(this.props.product.id, text);
   }
 
@@ -46,7 +51,7 @@ class Product extends React.Component {
           null
         }
         <ProductDescription {...rest} />
-        <ProductComments postComment={this.postCommentForProduct} comments={this.props.comments}/>
+        <ProductComments addComment={this.postCommentForProduct} comments={this.props.comments}/>
       </>
     )
   }
@@ -55,7 +60,7 @@ class Product extends React.Component {
 const mapStateToProps = (state, props) => (
   {
     product: state.products[props.match.params.id],
-    comments: state.products[props.match.params.id],
+    comments: state.comments[props.match.params.id] || [],
   }
 );
 
