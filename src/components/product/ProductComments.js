@@ -3,10 +3,11 @@ import ProductListItem from "../productList/ProductListItem";
 import PropTypes from "prop-types";
 import { commentType } from "../../types";
 
-const NewCommentInput = ({post}) => {
+const NewCommentInput = ({onSubmit}) => {
   const inputRef = React.createRef();
+
   const onCommentSubmit = () => {
-    post(inputRef.current.value)
+    onSubmit(inputRef.current.value)
     inputRef.current.value = ''
   }
 
@@ -22,7 +23,7 @@ const SingleComment = ({content}) => (
 
 const ProductComments = ({addComment, comments}) => (
   <div className='commentList'>
-    <NewCommentInput post={addComment} />
+    <NewCommentInput onSubmit={addComment} />
     { comments.map(content => <SingleComment content={content}/>) }
   </div>
 )

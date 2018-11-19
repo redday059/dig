@@ -13,20 +13,6 @@ import { productType, commentType } from "../../types";
 import ProductListItem from "../productList/ProductListItem";
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeImageId: 0,
-    }
-  }
-
-  changeActiveImage = id => {
-    this.setState({
-      activeImageId: id
-    })
-  };
-
   postCommentForProduct = text => {
     if (!text) {
       return
@@ -45,13 +31,9 @@ class Product extends React.Component {
 
     return (
       <>
-        { imgTotal ?
-          <ProductImage
-            thumbs={imgThumbs}
-            originals={imgOriginals}
-            activeId={this.state.activeImageId}
-            handleThumbClick={this.changeActiveImage}/> :
-          null
+        { imgTotal
+          ? <ProductImage thumbs={imgThumbs} originals={imgOriginals} />
+          : null
         }
         <ProductDescription {...rest} />
         <ProductComments addComment={this.postCommentForProduct} comments={this.props.comments}/>

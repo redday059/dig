@@ -24,4 +24,3 @@ App.propTypes = {
 };
 
 export default connect(null, { fetchProducts })(App);
-
