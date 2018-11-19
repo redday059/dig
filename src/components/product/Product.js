@@ -8,6 +8,9 @@ import ProductImage from "./ProductImage";
 import ProductDescription from "./ProductDescription";
 import { postComment } from '../../actions/comments';
 import ProductComments from "./ProductComments";
+import PropTypes from "prop-types";
+import { productType, commentType } from "../../types";
+import ProductListItem from "../productList/ProductListItem";
 
 class Product extends React.Component {
   constructor(props) {
@@ -28,7 +31,7 @@ class Product extends React.Component {
     if (!text) {
       return
     }
-    
+
     this.props.postComment(this.props.product.id, text);
   }
 
@@ -57,6 +60,12 @@ class Product extends React.Component {
   }
 }
 
+ProductListItem.propTypes = {
+  product: PropTypes.objectOf(productType).isRequired,
+  comments: PropTypes.arrayOf(commentType),
+  postComment: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state, props) => (
   {
     product: state.products[props.match.params.id],
@@ -66,5 +75,5 @@ const mapStateToProps = (state, props) => (
 
 export default compose(
   withRouter,
-  connect(mapStateToProps, {postComment})
+  connect(mapStateToProps, { postComment })
 )(Product);

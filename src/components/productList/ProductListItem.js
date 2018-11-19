@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { productShortType } from "../../types";
 
-export default product => {
+const ProductListItem = product => {
   const { id, title, description, specification, price, images } = product;
 
   return (
@@ -31,3 +33,9 @@ export default product => {
     </div>
   )
 };
+
+ProductListItem.propTypes = {
+  product: PropTypes.objectOf(productShortType).isRequired,
+};
+
+export default ProductListItem;

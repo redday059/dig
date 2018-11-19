@@ -1,4 +1,7 @@
 import React from 'react'
+import ProductListItem from "../productList/ProductListItem";
+import PropTypes from "prop-types";
+import { commentType } from "../../types";
 
 const NewCommentInput = ({post}) => {
   const inputRef = React.createRef();
@@ -23,5 +26,10 @@ const ProductComments = ({addComment, comments}) => (
     { comments.map(content => <SingleComment content={content}/>) }
   </div>
 )
+
+ProductListItem.propTypes = {
+  comments: PropTypes.arrayOf(commentType),
+  addComment: PropTypes.func.isRequired,
+};
 
 export default ProductComments;

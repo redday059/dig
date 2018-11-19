@@ -1,4 +1,7 @@
 import React from "react";
+import ProductListItem from "../productList/ProductListItem";
+import PropTypes from "prop-types";
+import { commentType } from "../../types";
 
 const ThumbImg = ({isActive, id, src, handleClick}) => {
   const onClick = () => handleClick(id)
@@ -23,5 +26,12 @@ const ProductImage = ({thumbs, originals, activeId, handleThumbClick}) => {
       </div>
     </div>
 )}
+
+ProductListItem.propTypes = {
+  activeId: PropTypes.number.isRequired,
+  thumbs: PropTypes.arrayOf(PropTypes.string),
+  originals: PropTypes.arrayOf(PropTypes.string),
+  handleThumbClick: PropTypes.func.isRequired,
+};
 
 export default ProductImage;
