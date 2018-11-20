@@ -1,18 +1,20 @@
 import React from "react";
 import ProductListItem from "../productList/ProductListItem";
 import PropTypes from "prop-types";
-import { productShortType } from "../../types";
+import { productDescriptionType } from "../../types";
+import styles from "./ProductDescription.module.css"
 
-const ProductDescription = ({title, specification, price}) => {
-  return <ul>
-    <li>{title}</li>
-    <li>{specification}</li>
-    <li>{price}</li>
+const ProductDescription = ({title, description, specification, price}) => {
+  return <ul className={styles.description}>
+    <li><span>Title:</span> {title}</li>
+    <li><span>Description:</span> {description}</li>
+    <li><span>Specification:</span> {specification}</li>
+    <li><span>Price: {price}</span></li>
   </ul>
-}
+};
 
 ProductListItem.propTypes = {
-  product: PropTypes.objectOf(productShortType).isRequired,
+  product: PropTypes.objectOf(productDescriptionType).isRequired,
 };
 
 export default ProductDescription;

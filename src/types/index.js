@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 
-
 export const imageType = PropTypes.shape({
   thumb: PropTypes.string.isRequired,
   original: PropTypes.string.isRequired
-})
+});
 
 export const productType = PropTypes.shape({
   id: PropTypes.number.isRequired,
@@ -17,7 +16,7 @@ export const productType = PropTypes.shape({
   imgThumbs: PropTypes.arrayOf(PropTypes.string).isRequired
 });
 
-export const productShortType = PropTypes.shape({
+export const productDescriptionType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
@@ -25,4 +24,11 @@ export const productShortType = PropTypes.shape({
   price: PropTypes.number.isRequired,
 });
 
-export const commentType = PropTypes.string
+export const productListType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  images: PropTypes.arrayOf(imageType).isRequired,
+});
+
+export const commentType = PropTypes.string;

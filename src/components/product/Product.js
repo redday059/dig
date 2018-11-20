@@ -12,6 +12,8 @@ import PropTypes from "prop-types";
 import { productType, commentType } from "../../types";
 import ProductListItem from "../productList/ProductListItem";
 
+import styles from './Product.module.css';
+
 class Product extends React.Component {
   postCommentForProduct = text => {
     if (!text) {
@@ -19,23 +21,25 @@ class Product extends React.Component {
     }
 
     this.props.postComment(this.props.product.id, text);
-  }
+  };
 
   render() {
     if (!this.props.product){
-      return <div>No results found.</div>;
+      return <div>Page is loading...</div>;
     }
 
-    const {imgThumbs, imgOriginals, images, ...rest} = this.props.product;
+    const { imgThumbs, imgOriginals, images, ...rest } = this.props.product;
     const imgTotal = get(this.props, 'product.images.length');
 
     return (
       <>
-        { imgTotal
-          ? <ProductImage thumbs={imgThumbs} originals={imgOriginals} />
-          : null
-        }
-        <ProductDescription {...rest} />
+        <div className={styles.product}>
+          { imgTotal
+            ? <ProductImage thumbs={imgThumbs} originals={imgOriginals}/>
+            : null
+          }
+          <ProductDescription {...rest} />
+        </div>
         <ProductComments addComment={this.postCommentForProduct} comments={this.props.comments}/>
       </>
     )

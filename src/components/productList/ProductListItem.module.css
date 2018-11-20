@@ -1,0 +1,11 @@
+.item {
+  display: flex;
+  align-items: center;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.info {
+  padding-left: 15px;
+}

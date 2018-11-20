@@ -1,0 +1,31 @@
+.gallery {
+  width: 300px;
+  margin: 0 auto 20px;
+}
+
+.original {
+  width: 300px;
+  height: 300px;
+  border: 5px solid cornflowerblue;
+  box-sizing: border-box;
+}
+
+.thumbs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thumbs img {
+  width: 98px;
+  height: 98px;
+  box-sizing: border-box;
+}
+
+.inactive {
+  border: 5px solid lightgray;
+}
+
+.active {
+  border: 5px solid cornflowerblue;
+  transition: border ease-in-out 300ms;
+}

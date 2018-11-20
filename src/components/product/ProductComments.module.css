@@ -1,0 +1,36 @@
+.util {
+  padding: 8px 10px;
+  font-size: 14px;
+  line-height: 16px;
+  border-radius: 18px;
+}
+
+.new-comment-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.comment {
+  composes: util;
+  margin-bottom: 20px;
+  background-color: #eff1f3;
+}
+
+.new-comment-input {
+  composes: util;
+  margin-right: 20px;
+  background-color: #f2f3f5;
+  border-color: #ccd0d5;
+}
+
+.new-comment-submit {
+  composes: util;
+  border-color: black;
+  background-color: black;
+  color: white;
+}
+
+.comment-list {
+  padding-left: 20px;
+}
