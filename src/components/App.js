@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-import './App.css';
+import styles from './App.module.css';
 import { fetchProducts } from "../actions/products";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    props.fetchProducts();
+
+  componentDidMount() {
+    this.props.fetchProducts();
   }
 
   render() {
     return (
       <div className="App">
-        {this.props.children}
+        <div className={styles.container}>
+          {this.props.children}
+        </div>
       </div>
     );
   }
